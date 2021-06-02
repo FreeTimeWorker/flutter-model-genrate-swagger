@@ -9,7 +9,7 @@
 
 #### 安装教程
 
-下载后，安装.net 5运行时，然后就可以使用了
+根据电脑版本下对应文件后，点击flutter-model-genrate-swagger.exe运行
 
 #### 使用说明
 
