@@ -1,0 +1,15 @@
+﻿@{
+    var modeldes = "";
+    if (!string.IsNullOrEmpty(Model.Description))
+    {
+        modeldes = string.Concat("///", Model.Description);
+    }
+    var modelparams = "";
+}
+@(modeldes)
+enum @Model.Name {
+@foreach (var proptey in Model.ModelPropties)
+{
+    @Raw("item_")@proptey.Name@Raw(",")
+}
+}

@@ -1,0 +1,167 @@
+﻿@using flutter_model_genrate_swagger;
+@using System.Linq;
+@using System.Text;
+@{
+    var modeldes = "";
+    if (!string.IsNullOrEmpty(Model.Description))
+    {
+        modeldes = string.Concat("///", Model.Description);
+    }
+    var modelparams = "";//参数
+
+    var package = "";
+    if (Model.Package != null && Model.Package.Count > 0)
+    {
+        foreach (var pk in Model.Package)
+        {
+            package += string.Concat("import '", pk, ".dart';\n");
+        }
+    }
+}
+
+
+@Raw(package)
+@Raw(modeldes)
+class @Model.Name {
+@foreach (var proptey in Model.ModelPropties)
+{
+    if (!string.IsNullOrEmpty(proptey.Description))
+    { 
+        @Raw(string.Concat("///", proptey.Description,"\n"))   
+    }
+    @switch (proptey.Type)
+    {
+        case "array":
+            @{
+                string type = string.Concat("List<", @proptey.SubType, ">");
+            }
+            @Raw(type) @proptey.LowCaseName@(";")
+            break;
+        case "integer":
+            @("int ") @proptey.LowCaseName@(";")
+            break;
+        case "string":
+            @("String ") @proptey.LowCaseName@(";")
+            break;
+        case "boolean":
+            @("bool ") @proptey.LowCaseName@(";")
+            break;
+        case "number":
+            if (proptey.Format == "double")
+            {
+                @("double ") @proptey.LowCaseName@(";")
+            }
+            else
+            {
+                @Raw("///类型不确定")
+                @("double ") @proptey.LowCaseName@(";")
+            }
+            break;
+        default:
+            @Raw(proptey.Type + " ")@proptey.LowCaseName@(";")
+            break;
+    }
+    @Raw("\n");
+    if (string.IsNullOrEmpty(modelparams))
+    {
+        modelparams += string.Concat("this.", proptey.LowCaseName);
+    }
+    else
+    {
+        modelparams += string.Concat(",this.", proptey.LowCaseName);
+    }
+}
+@Model.Name @("({")@modelparams@("});")
+@Raw("\n")
+@Model.Name@Raw(".fromJson(Map<String, dynamic> json) {") @Raw("\n")
+@foreach (var proptey in Model.ModelPropties)
+{
+    @switch (proptey.Type)
+    {
+        case "array":
+            @{
+                string type = string.Concat("List<", @proptey.SubType, ">");
+            }
+            @Raw("if (json['")@proptey.Name@Raw("'] != null) {")@Raw("\n")
+            @proptey.LowCaseName@Raw("=[];")@Raw("\n")
+            @Raw("json['")@proptey.Name@Raw("'].forEach((v) {")@Raw("\n")
+            @if (proptey.SubTypeDes == "baseType")
+            {
+                @proptey.LowCaseName@(".add(v);")@Raw("\n")
+            }
+            else
+            {
+                @proptey.LowCaseName@(".add(")@proptey.SubType@Raw(".fromJson(v));")@Raw("\n")
+            }
+            @Raw("});\n")
+            @Raw(" } else {\n")
+            @proptey.LowCaseName@Raw("=[];\n")
+            @Raw("}\n")
+            break;
+        case "integer":
+        case "string":
+        case "boolean":
+        case "number":
+            @proptey.LowCaseName@("=")@Raw("json['") @proptey.Name@Raw("'];")
+            break;
+        default:
+            //判断类型的
+            if (proptey.TypeDes == "object")
+            {
+                @proptey.LowCaseName@Raw("=json['")@proptey.Name@Raw("']!=null? ")@proptey.Type@Raw(".fromJson(json['")@proptey.Name@Raw("']) : null;\n")
+            }
+            else
+            {
+                @proptey.LowCaseName@("=")@Raw("json['") @proptey.Name@Raw("'];")
+            }
+            break;
+    }
+    @Raw("\n");
+}
+}
+@Raw("Map<String, dynamic> toJson() { \n")
+@Raw("final Map<String, dynamic> data = new Map<String, dynamic>();\n")
+@foreach (var proptey in Model.ModelPropties)
+{
+    switch (proptey.Type)
+    {
+        case "integer":
+        case "string":
+        case "boolean":
+        case "number":
+            @Raw("data['")@proptey.Name@Raw("'] = this.")@proptey.LowCaseName@Raw(";\n")
+            break;
+        case "array":
+            //data['Data'] = this.data.map((v) => v.toJson()).toList();
+            @Raw("if (this.")@proptey.LowCaseName@Raw(" != null) { \n")
+
+            @if (proptey.SubTypeDes == "baseType")
+            {
+                @Raw("data['")@proptey.Name@Raw("'] = this.")@proptey.LowCaseName@Raw(".toList();\n")
+            }
+            else
+            {
+                @Raw("data['")@proptey.Name@Raw("'] = this.")@proptey.LowCaseName@Raw(".map((v) => v.toJson()).toList();\n")
+            }
+            @Raw("}\n")
+
+            break;//普通对象
+        default:
+            if (proptey.TypeDes == "object")
+            {
+
+                @Raw("if (this.")@proptey.LowCaseName@Raw(" != null) { \n")
+                @Raw("data['")@proptey.Name@Raw("'] = this.")@proptey.LowCaseName@Raw(".toJson();\n")
+                @Raw("}\n")
+            }
+            else
+            {
+                @Raw("data['")@proptey.Name@Raw("'] = this.")@proptey.LowCaseName@Raw(";\n")
+            }
+            break;
+    }
+}
+@Raw("return data;\n")
+@Raw("}\n")
+
+}
