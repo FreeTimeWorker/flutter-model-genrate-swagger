@@ -9,7 +9,9 @@
 
 #### 安装教程
 
-根据电脑版本下对应文件后，点击flutter-model-genrate-swagger.exe运行
+点击链接
+https://gitee.com/zzf_1/flutter-model-genrate-swagger/releases/1.0.0.0
+下载对应文件后，点击flutter-model-genrate-swagger.exe运行 release版本无需.net运行时
 
 #### 使用说明
 
