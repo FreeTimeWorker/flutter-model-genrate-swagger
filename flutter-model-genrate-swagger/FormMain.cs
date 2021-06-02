@@ -106,11 +106,6 @@ namespace flutter_model_genrate_swagger
                     Engine.Razor = service;
                     var objmodel = File.ReadAllText("fluttermodel.cshtml");
                     var enummodel= File.ReadAllText("flutterenum.cshtml");
-                    var a = string.Join(',', modelsinfo[0].ModelPropties.Select(o =>
-                   {
-                       return string.Concat("this.", o.Name);
-                   }).ToList());
-
                     for (int i = 0; i < modelsinfo.Count; i++)
                     {
                         var result = "";
