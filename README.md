@@ -1,23 +1,20 @@
 # flutter-model-genrate-swagger
 
 #### 介绍
-基于.net 5 通过swagger.json生成flutter model, 暂无空安全支持
+通过swagger.json生成flutter model, 暂无空安全支持
 
 #### 软件架构
-软件架构说明
+基于.net 5 ,利用razor模板生成代码
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+下载后，安装.net 5运行时，然后就可以使用了
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1,选择一个 swagger.json 地址，一个网络地址，在点击确定后会将swagger.json下载到程序根目录下
+2,输入输出文件夹，默认为D:/output,如果D盘不存在会报错，在盘符存在的情况下，直接写文件夹位置，点生成即可，正常情况下会创建相应的文件夹
 
 #### 参与贡献
 
@@ -29,9 +26,4 @@
 
 #### 特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+如果无法连接到外网，也可以将swagger.json放到程序根目录下直接点击生成，有问题请及时提交Issues
