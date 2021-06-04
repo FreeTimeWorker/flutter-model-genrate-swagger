@@ -1,0 +1,90 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\flutter-model-genrate\\1\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger.csproj": {}
+  },
+  "projects": {
+    "E:\\flutter-model-genrate\\1\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\flutter-model-genrate\\1\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger.csproj",
+        "projectName": "flutter-model-genrate-swagger",
+        "projectPath": "E:\\flutter-model-genrate\\1\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\flutter-model-genrate\\1\\flutter-model-genrate-swagger\\flutter-model-genrate-swagger\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0-windows7.0": {
+            "targetAlias": "net5.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "RazorEngine.NetCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
